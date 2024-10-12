@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using BlazorEFCoreClean.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using BlazorEFCoreClean.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlazorEFCoreClean.Infrastructure.Persistence.Configurations
 {

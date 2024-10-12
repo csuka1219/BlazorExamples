@@ -3,11 +3,6 @@ using BlazorEFCoreClean.Application.DTOs;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorEFCoreClean.Application.Features.Products.Queries
 {

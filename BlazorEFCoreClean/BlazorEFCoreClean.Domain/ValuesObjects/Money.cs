@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlazorEFCoreClean.Domain.ValuesObjects
+﻿namespace BlazorEFCoreClean.Domain.ValuesObjects
 {
     public class Money
     {
