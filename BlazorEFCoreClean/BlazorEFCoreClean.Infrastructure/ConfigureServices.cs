@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorEFCoreClean.Infrastructure
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ConfigureServices
     {
