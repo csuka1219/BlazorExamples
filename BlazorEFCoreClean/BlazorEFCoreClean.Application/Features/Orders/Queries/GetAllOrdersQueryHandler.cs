@@ -24,7 +24,7 @@ namespace BlazorEFCoreClean.Application.Features.Orders.Queries
                 Id = order.Id,
                 OrderDate = order.OrderDate,
                 TotalAmount = order.TotalAmount,
-                ProductId = order.ProductId,
+                Products = order.Products,
             }).ToList();
 
             return OrderDtos;

@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Persistence\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BlazorEFCoreClean.Application\BlazorEFCoreClean.Application.csproj" />
     <ProjectReference Include="..\BlazorEFCoreClean.Domain\BlazorEFCoreClean.Domain.csproj" />
   </ItemGroup>

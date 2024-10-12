@@ -33,9 +33,6 @@ namespace BlazorEFCoreClean.Infrastructure.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
@@ -57,9 +54,6 @@ namespace BlazorEFCoreClean.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -68,25 +62,37 @@ namespace BlazorEFCoreClean.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("BlazorEFCoreClean.Domain.Entities.Product", b =>
+            modelBuilder.Entity("OrderProduct", b =>
                 {
-                    b.HasOne("BlazorEFCoreClean.Domain.Entities.Order", "Order")
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId")
+                    b.Property<int>("OrdersId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrdersId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("OrderProduct");
+                });
+
+            modelBuilder.Entity("OrderProduct", b =>
+                {
+                    b.HasOne("BlazorEFCoreClean.Domain.Entities.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrdersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("BlazorEFCoreClean.Domain.Entities.Order", b =>
-                {
-                    b.Navigation("Products");
+                    b.HasOne("BlazorEFCoreClean.Domain.Entities.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,6 @@
-﻿namespace BlazorEFCoreClean.Application.DTOs
+﻿using BlazorEFCoreClean.Domain.Entities;
+
+namespace BlazorEFCoreClean.Application.DTOs
 {
     public class ProductDto
     {

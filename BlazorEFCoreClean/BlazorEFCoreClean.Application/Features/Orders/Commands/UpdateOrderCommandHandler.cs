@@ -25,6 +25,7 @@ namespace BlazorEFCoreClean.Application.Features.Orders.Commands
 
             order.OrderDate = request.Order.OrderDate;
             order.TotalAmount = request.Order.TotalAmount;
+            order.Products = request.Order.Products;
 
             await _context.SaveChangesAsync(cancellationToken);
 

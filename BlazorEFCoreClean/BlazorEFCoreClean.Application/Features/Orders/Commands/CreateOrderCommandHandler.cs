@@ -19,7 +19,7 @@ namespace BlazorEFCoreClean.Application.Features.Orders.Commands
             {
                 OrderDate = request.Order.OrderDate,
                 TotalAmount = request.Order.TotalAmount,
-                ProductId = request.Order.ProductId,
+                Products = request.Order.Products,
             };
 
             _context.Orders.Add(order);
