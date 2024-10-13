@@ -1,6 +1,7 @@
 ﻿using BlazorEFCoreClean.Application.Common.Interfaces;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorEFCoreClean.Application.Features.Products.Commands
 {
@@ -15,21 +16,23 @@ namespace BlazorEFCoreClean.Application.Features.Products.Commands
 
         public async Task<int> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            Product? product = await _context.Products.FindAsync(request, cancellationToken);
+            Product? entity = await _context.Products
+                    .Where(l => l.Id == request.Product.Id)
+                    .FirstOrDefaultAsync(cancellationToken);
 
-            if (product == null)
+            if (entity == null)
             {
                 throw new Exception();
                 //throw new NotFoundException(nameof(TodoItem), request.Id);
             }
 
-            product.Name = request.Product.Name;
-            product.Price = request.Product.Price;
-            product.StockQuantity = request.Product.StockQuantity;
+            entity.Name = request.Product.Name;
+            entity.Price = request.Product.Price;
+            entity.StockQuantity = request.Product.StockQuantity;
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return product.Id;
+            return entity.Id;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BlazorEFCoreClean.Application.Features.Products.Queries
 
         public async Task<List<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            List<Product> Products = await _context.Products.ToListAsync(cancellationToken);
+            List<Product> Products = await _context.Products.AsNoTracking().ToListAsync(cancellationToken);
 
             List<ProductDto> ProductDtos = Products.Select(product => new ProductDto
             {

@@ -1,6 +1,7 @@
 ﻿using BlazorEFCoreClean.Application.Common.Interfaces;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorEFCoreClean.Application.Features.Products.Commands
 {
@@ -15,15 +16,16 @@ namespace BlazorEFCoreClean.Application.Features.Products.Commands
 
         public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            Product? product = await _context.Products.FindAsync(request, cancellationToken);
+            Product? entity = await _context.Products
+                    .Where(l => l.Id == request.Id)
+                    .FirstOrDefaultAsync(cancellationToken);
 
-            if (product == null)
+            if (entity == null)
             {
                 throw new Exception();
-                //throw new NotFoundException(nameof(TodoItem), request.Id);
             }
 
-            _context.Products.Remove(product);
+            _context.Products.Remove(entity);
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

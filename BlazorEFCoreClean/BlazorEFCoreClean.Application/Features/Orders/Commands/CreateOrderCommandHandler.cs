@@ -1,6 +1,10 @@
-﻿using BlazorEFCoreClean.Application.Common.Interfaces;
+﻿using AutoMapper;
+using BlazorEFCoreClean.Application.Common.Interfaces;
+using BlazorEFCoreClean.Application.DTOs;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace BlazorEFCoreClean.Application.Features.Orders.Commands
 {
@@ -15,11 +19,16 @@ namespace BlazorEFCoreClean.Application.Features.Orders.Commands
 
         public async Task<int> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var order = new Order
+            List<int> productIds = request.Order.Products.Select(p => p.Id).ToList();
+            List<Product> products = await _context.Products
+                                    .Where(p => productIds.Contains(p.Id))
+                                    .ToListAsync(cancellationToken);
+
+            Order order = new Order
             {
                 OrderDate = request.Order.OrderDate,
                 TotalAmount = request.Order.TotalAmount,
-                Products = request.Order.Products,
+                Products = products
             };
 
             _context.Orders.Add(order);

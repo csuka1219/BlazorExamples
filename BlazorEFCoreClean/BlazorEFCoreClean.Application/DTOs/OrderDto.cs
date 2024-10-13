@@ -7,6 +7,6 @@ namespace BlazorEFCoreClean.Application.DTOs
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<ProductDto> Products { get; set; } = new List<ProductDto>();
     }
 }

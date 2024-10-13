@@ -2,5 +2,5 @@
 
 namespace BlazorEFCoreClean.Application.Features.Orders.Commands
 {
-    public class DeleteOrderCommand(int Id) : IRequest { }
+    public record DeleteOrderCommand(int Id) : IRequest;
 }
