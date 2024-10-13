@@ -1,4 +1,5 @@
 using BlazorEFCoreClean.WebUI.Server.Components;
+using MudBlazor.Services;
 
 namespace BlazorEFCoreClean.WebUI.Server
 {
@@ -12,7 +13,9 @@ namespace BlazorEFCoreClean.WebUI.Server
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
+            builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
+            builder.Services.AddMudServices();
 
             var app = builder.Build();
 
