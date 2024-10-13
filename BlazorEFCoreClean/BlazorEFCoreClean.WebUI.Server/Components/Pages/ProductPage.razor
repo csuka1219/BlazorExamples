@@ -1,0 +1,18 @@
+﻿@page "/products"
+
+<MudButton OnClick="CreateProduct" Color="@Color.Success" Class="add-item-btn">Add Item</MudButton>
+
+<MudDataGrid Items="@_products">
+    <Columns>
+        <PropertyColumn Property="x => x.Name" />
+        <PropertyColumn Property="x => x.Price" />
+        <PropertyColumn Property="x => x.StockQuantity" />
+        <TemplateColumn CellClass="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudButton OnClick="() => DeleteProduct(context.Item.Id)" Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Error">Delete</MudButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
