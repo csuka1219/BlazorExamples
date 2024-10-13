@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BlazorEFCoreClean.Application.Common.Interfaces;
+﻿using BlazorEFCoreClean.Application.Common.Interfaces;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using BlazorEFCoreClean.Application.Common.Interfaces;
-using BlazorEFCoreClean.Application.DTOs;
+﻿using BlazorEFCoreClean.Application.Common.Interfaces;
 using BlazorEFCoreClean.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace BlazorEFCoreClean.Application.Features.Orders.Commands
 {

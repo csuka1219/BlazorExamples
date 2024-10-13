@@ -1,6 +1,4 @@
-﻿using BlazorEFCoreClean.Domain.Entities;
-
-namespace BlazorEFCoreClean.Application.DTOs
+﻿namespace BlazorEFCoreClean.Application.DTOs
 {
     public class OrderDto
     {

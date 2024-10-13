@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BlazorEFCoreClean.Domain.Entities
+﻿namespace BlazorEFCoreClean.Domain.Entities
 {
     public class Order
     {
