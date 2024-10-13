@@ -20,15 +20,12 @@ namespace BlazorEFCoreClean.Application.Features.Orders.Queries
 
         public async Task<List<OrderDto>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
         {
-            List<Order> Orders = await _context.Orders.ToListAsync(cancellationToken);
+            List<Order> Orders = await _context.Orders
+                                        .Include(o => o.Products)
+                                        .AsNoTracking()
+                                        .ToListAsync(cancellationToken);
 
-            List<OrderDto> OrderDtos = Orders.Select(order => new OrderDto
-            {
-                Id = order.Id,
-                OrderDate = order.OrderDate,
-                TotalAmount = order.TotalAmount,
-                Products = _mapper.Map<List<ProductDto>>(order.Products),
-            }).ToList();
+            List<OrderDto> OrderDtos = _mapper.Map<List<OrderDto>>(Orders);
 
             return OrderDtos;
         }

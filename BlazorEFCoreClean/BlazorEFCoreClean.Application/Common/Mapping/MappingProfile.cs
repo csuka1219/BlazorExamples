@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BlazorEFCoreClean.Application.DTOs;
+using BlazorEFCoreClean.Domain.Entities;
 
 namespace BlazorEFCoreClean.Application.Common.Mapping
 {
@@ -6,6 +8,8 @@ namespace BlazorEFCoreClean.Application.Common.Mapping
     {
         public MappingProfile()
         {
+            CreateMap<Product, ProductDto>().PreserveReferences();
+            CreateMap<Order, OrderDto>().PreserveReferences();
         }
     }
 

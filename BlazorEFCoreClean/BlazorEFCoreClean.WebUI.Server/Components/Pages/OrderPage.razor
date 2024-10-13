@@ -1,0 +1,18 @@
+﻿@page "/orders"
+@using BlazorEFCoreClean.Application.DTOs
+
+<MudDataGrid T="OrderDto" Items="@_orders">
+    <Columns>
+        <SelectColumn T="ProductDto" />
+        <PropertyColumn Property="x => x.OrderDate" />
+        <PropertyColumn Property="x => x.TotalAmount" />
+        <PropertyColumn Property="x => GetProductsName(x.Products)" />
+        <TemplateColumn CellClass="d-flex justify-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudButton OnClick="() => DeleteOrder(context.Item.Id)" Size="@Size.Small" Variant="@Variant.Filled" Color="@Color.Error">Delete</MudButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
